@@ -2,18 +2,24 @@
 
 .left {
     width: 48%;
-    float: left;
+    display: inline-block;
     &--float {
         height: 105px;
-        p {
-            float: left;
-        }
+    }
+}
+
+.row {
+    display: block;
+    p {
+        display: inline-block;
+        margin: 0;
+        padding: 4px;
     }
 }
 
 .right {
     width: 48%;
-    float: left;
+    display: inline-block;
 }
 
 .right__above {
