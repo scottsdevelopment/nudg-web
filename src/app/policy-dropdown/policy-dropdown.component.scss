@@ -1,0 +1,108 @@
+@import './../styles/variables.scss';
+
+.dropdown {
+    text-align: left;
+    font-size: 12px;
+    width: 100%;
+    background: $white;
+    border: 1px solid $grey;
+    height: 25px;
+    position: relative;
+    cursor: default;
+    &__button {
+        text-align: center;
+        float: right;
+        background: $ivory;
+        // border: 1px solid $black;
+        width: 20px;
+        font-size: 16px;
+        border: 0;
+        &::selection {
+            color: none;
+            background: none;
+        }
+    }
+    
+    &__option {
+        height: 25px;
+        span {
+            height: 20px;
+            margin: 2.5px;
+            display: block;
+        }
+        &::selection {
+            color: none;
+            background: none;
+        }
+    }
+
+    &__options {
+        z-index: 1;
+        position: absolute;
+        top: 25px;
+        padding-top: 2px;
+        width: inherit;
+        background: $white;
+        display: none;
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed;
+            tr, td {
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                // max-width: 0;
+                &:not(:first) {
+                    max-width: 0;
+                }
+                border-right: 1px solid $grey;
+                &:last-child {
+                    border-right: 0;
+                }
+            }
+            td {
+                &:nth-child(1) {
+                    width: 40%;
+                }
+                &:nth-child(2) {
+                    width: 10%;
+                    text-align: center;
+                }
+                &:nth-child(3) {
+                    width: 5%;
+                    text-align: center;
+                }
+                &:nth-child(4) {
+                    width: 15%;
+                    text-align: left;
+                }
+                &:nth-child(5) {
+                    width: 3%;
+                    text-align: center;
+                }
+                &:nth-child(6) {
+                    width: 27%;
+                    text-align: left;
+                    overflow: hidden;
+                }
+            }
+        }
+        &--opened {
+            display: block;
+        }
+        overflow-y: scroll;
+        max-height: 300px;
+        .dropdown__option {
+            &:hover {
+                background: $black;
+                color: $white;
+                > td {
+                    background: $black;
+                    color: $white;                    
+                }
+            }
+        }
+    }
+
+}

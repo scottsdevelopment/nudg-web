@@ -1,0 +1,98 @@
+@import './../styles/variables.scss';
+
+header {
+    margin: 0;
+    padding: 0;
+    color: $ivory;
+    background: $red;
+    min-height: 100px;
+    clear: both;
+    padding: 10px;
+    border-bottom: 1px solid $black;
+    width: 100%;
+    > div {
+        float: left;
+    }
+    display: flex;
+}
+
+.spacer {
+    width: 1px;
+    height: 84px;
+    background: $grey;
+    margin-top: 8px;
+}
+
+.logo {
+    min-width: 100px;
+    height: 100px;
+    text-align: center;
+    margin-right: 10px;
+}
+
+.logo__image {
+    width: 90px;
+    height: 90px;
+    margin: 5px auto;
+}
+
+.title {
+    min-width: 360px;
+
+    &__header {
+        font-size: 24px;
+        padding: 0;
+        margin: 0;
+        text-align: center;
+    }
+    &__date {
+        width: 80%;
+        margin: 0 auto;
+        &-header {
+            font-size: 12px;
+            width: 50px;
+            text-align: right;
+            float: left;
+            padding: 0;
+            margin: 0;
+        }
+        &-input {
+            height: 40px;
+            margin-left: 10px;
+        }
+    }
+}
+
+.summary {
+    text-align: center;
+    width: 100px;
+    padding: 0 10px;
+    &__score {
+        color: $orange;
+        font-size: 48px;
+    }
+    &__description {
+        font-size: 14px;
+        display: block;
+    }
+}
+
+.actions {
+    margin-left: 10px;
+    min-width: 400px;
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-evenly;
+
+    button {
+        background: $black;
+        border: 0;
+        color: $cream;
+        border-radius: 4px;
+        font-size: 18px;
+        height: 60px;
+        width: 160px;
+        margin: 1px;
+        flex: auto;
+    }
+}

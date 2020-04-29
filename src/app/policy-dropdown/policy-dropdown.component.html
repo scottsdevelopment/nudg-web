@@ -1,0 +1,19 @@
+<div class="dropdown">
+    <button (click)="onDropdown()" class="dropdown__button">▼</button>
+    <div (click)="onDropdown()" class="dropdown__option">
+        <span>{{ policy?.name }}</span>
+    </div>
+    <div [ngClass]="{ 'dropdown__options--opened': opened }" class="dropdown__options">
+        <table>
+            <tr (click)="onSelect(policy)" *ngFor="let policy of policies" class="dropdown__option">
+                <td>{{ policy.name }}</td>
+                <td>{{ getLatestRevision(policy).status }}</td>
+                <td>{{ getLatestRevision(policy).number }}</td>
+                <td>{{ policy.nist }}</td>
+                <td>{{ policy.level }}</td>
+                <td>{{ policy.cmmc }}</td>
+            </tr>
+        </table>
+    </div>
+
+</div>

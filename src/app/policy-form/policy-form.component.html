@@ -1,0 +1,41 @@
+<main class="basic-container">
+    <div class="left">
+      <div class="left--float">
+        <div class="row">
+          <p>Policy Subtitle: <span class="highlight">{{ policy?.name }}</span></p>
+        </div>
+        <div class="row">
+          <p>Policy Number: <span class="highlight">{{ getLatestRevision(policy).number }}</span></p>
+          <p>Policy Issue Date: </p>
+          <p>Policy Revision Number: </p>
+          <p>Policy Revision Date: </p>
+        </div>
+        <div class="row">
+          <p>NIST 800-171 Mapping: <span class="highlight">{{ policy?.nist }}</span></p>
+          <p>Task Type: <span class="highlight">{{ policy?.taskType }}</span></p>
+        </div>
+        <div class="row">
+          <p>CMMC Mapping: <span class="highlight">{{ policy?.cmmc }}</span></p>
+          <p>CMMC Level: <span class="highlight">{{ policy?.level }}</span></p>
+        </div>
+      </div>
+      <div class="clearbreak">
+        <h2>Policy Objective</h2>
+        <div class="fixed-height highlight" [innerHTML]="getLatestRevision(policy).objective?.text"></div>
+      </div>
+    </div>
+    <div class="right">
+      <div class="right__above">
+        <h4 class="nospacer">Control</h4>
+        <div class="fixed-height fixed-height--small highlight" [innerHTML]="getLatestRevision(policy).procedureControl?.control"></div>
+      </div>
+      <div class="right__above">
+        <h4 class="nospacer">Procedure Roles</h4>
+        <div class="fixed-height fixed-height--small highlight" [innerHTML]="getLatestRevision(policy).procedureControl?.procedure"></div>
+      </div>
+      <div class="clearbreak">
+        <h2>Policy Procedure</h2>
+        <div class="fixed-height highlight" [innerHTML]="getLatestRevision(policy).procedure?.text "></div>
+      </div>
+    </div>
+  </main>

@@ -1,0 +1,155 @@
+@import './app/styles/variables';
+
+/*@import '../node_modules/@angular/material/theming';
+
+@include mat-core();
+
+
+$custom-theme-primary: mat-palette((
+  50 : #fce6e6,
+  100 : #f8c2c2,
+  200 : #f39999,
+  300 : #ee7070,
+  400 : #ea5151,
+  500 : #e63232,
+  600 : #e32d2d,
+  700 : #df2626,
+  800 : #db1f1f,
+  900 : #d51313,
+  A100 : #ffffff,
+  A200 : #ffd1d1,
+  A400 : #ff9e9e,
+  A700 : #ff8585,
+  contrast: (
+      50 : #000000,
+      100 : #000000,
+      200 : #000000,
+      300 : #000000,
+      400 : #ffffff,
+      500 : #ffffff,
+      600 : #ffffff,
+      700 : #ffffff,
+      800 : #ffffff,
+      900 : #ffffff,
+      A100 : #000000,
+      A200 : #000000,
+      A400 : #000000,
+      A700 : #000000,
+  )
+));
+
+$custom-theme-accent: mat-palette( (
+  50 : #fff7f0,
+  100 : #ffebd9,
+  200 : #ffdebf,
+  300 : #ffd1a5,
+  400 : #ffc792,
+  500 : #ffbd7f,
+  600 : #ffb777,
+  700 : #ffae6c,
+  800 : #ffa662,
+  900 : #ff984f,
+  A100 : #ffffff,
+  A200 : #ffffff,
+  A400 : #fff9f5,
+  A700 : #ffeadb,
+  contrast: (
+      50 : #000000,
+      100 : #000000,
+      200 : #000000,
+      300 : #000000,
+      400 : #000000,
+      500 : #000000,
+      600 : #000000,
+      700 : #000000,
+      800 : #000000,
+      900 : #000000,
+      A100 : #000000,
+      A200 : #000000,
+      A400 : #000000,
+      A700 : #000000,
+  )
+));
+
+$custom-theme-warn: $custom-theme-primary;
+
+
+
+// Background palette for light themes.
+$mat-light-theme-background: (
+  status-bar: map_get($mat-grey, 300),
+  app-bar:    map_get($mat-grey, 100),
+  background: map_get($colors, grey),
+  hover:      rgba(black, 0.04), // TODO(kara): check style with Material Design UX
+  card:       white,
+  dialog:     white,
+  disabled-button: rgba(black, 0.12),
+  raised-button: white,
+  focused-button: $dark-focused,
+  selected-button: map_get($mat-grey, 300),
+  selected-disabled-button: map_get($mat-grey, 400),
+  disabled-button-toggle: map_get($mat-grey, 200),
+  unselected-chip: map_get($mat-grey, 300),
+  disabled-list-option: map_get($mat-grey, 200),
+);
+
+// Foreground palette for light themes.
+$mat-light-theme-foreground: (
+  base:              black,
+  divider:           $dark-dividers,
+  dividers:          $dark-dividers,
+  disabled:          $dark-disabled-text,
+  disabled-button:   rgba(black, 0.26),
+  disabled-text:     $dark-disabled-text,
+  hint-text:         $dark-disabled-text,
+  secondary-text:    $dark-secondary-text,
+  icon:              rgba(black, 0.54),
+  icons:             rgba(black, 0.54),
+  text:              rgba(black, 0.87),
+  slider-min:        rgba(black, 0.87),
+  slider-off:        rgba(black, 0.26),
+  slider-off-active: rgba(black, 0.38),
+);
+
+@function nudg-theme($primary, $accent, $warn: mat-palette($mat-red)) {
+  @return (
+    primary: $primary,
+    accent: $accent,
+    warn: $warn,
+    is-dark: false,
+    foreground: $mat-light-theme-foreground,
+    background: $mat-light-theme-background,
+  );
+}
+
+$custom-theme: nudg-theme($custom-theme-primary, $custom-theme-accent, $custom-theme-warn);
+
+
+
+.nudg-theme {
+  @include angular-material-theme($custom-theme);
+}
+
+html, body { height: 100%; }
+
+body { 
+  font-family: Roboto, Arial, sans-serif;
+  margin: 0;
+}
+
+.basic-container {
+  padding: 30px;
+}*/
+
+body {
+  margin: 0;
+  padding: 0;
+  background: $grey;
+  color: $black;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+main {
+  padding: 0.5em;
+}

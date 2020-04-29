@@ -1,0 +1,78 @@
+// Colors
+
+$black:  rgb(59, 56, 56);
+$red:    rgb(230, 50, 50);
+$white:  rgb(255, 255, 255);
+$ivory:  rgb(255, 255, 240);
+$grey:   rgb(217, 217, 217);
+$orange: rgb(255, 189, 127);
+$brown:  rgb(133, 77, 77);
+$green:  rgb(27, 177, 55);
+$cream:  rgb(253, 253, 205);
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+* {
+    font-family: "Open Sans";
+}
+
+input, button {
+    border: 1px solid $grey;
+    height: 25px;
+}
+
+.button {
+    &--black {
+        background: $black;
+        border: 0;
+        color: $cream;
+        border-radius: 4px;
+        margin: 1px;
+    }
+    &--large {
+        font-size: 18px;
+        height: 60px;
+        width: 160px;
+    }
+    &--stretch {
+        width: 100%;
+    }
+    &--half {
+        width: 50%;
+    }
+}
+
+h1 {
+    font-size: 20px;
+}
+
+h2 {
+    font-size: 18px;
+}
+
+h3 {
+    font-size: 16px;
+}
+
+span, p, div {
+    font-size: 12px;
+}
+
+.text {
+    &--center {
+        text-align: center;
+    }
+}
+
+.input--small {
+    width: 40px;
+}
+
+.clearbreak {
+    clear: both;
+}
+
+.nospacer {
+    padding: 0;
+    margin: 0;
+}

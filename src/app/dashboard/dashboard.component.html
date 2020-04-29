@@ -1,0 +1,40 @@
+<main>
+    <table class="policies">
+        <thead class="policies__headers">
+            <tr>
+                <th><button class="button--black">Full Policy Navigation Menu</button></th>
+                <th colspan="6">
+                    <table class="policies__dropdown-columns">
+                        <tr>
+                            <th>Sub-Policy Selection</th>
+                            <th>Status</th>
+                            <th>Policy Number</th>
+                            <th>NIST</th>
+                            <th>CMMC Level</th>
+                            <th>CMMC</th>
+                        </tr>
+                    </table>
+                </th>
+                <th>Total</th>
+                <th>Implemented</th>
+                <th>Percent</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody class="policies__body">
+            <tr *ngFor="let policyFamily of policyFamilies">
+                <td><button (click)="getPolicyForm(dropDown.policy)" class="button--black button--stretch">{{ policyFamily.name }}</button></td>
+                <td colspan="6">
+                    <app-policy-dropdown #dropDown [policies]="policyFamily.policies"></app-policy-dropdown>
+                </td>
+                <td><input class="input--small text--center" type="number" value="{{ policyFamily.policies.length }}"></td>
+                <td><input class="input--small text--center" type="number" value="{{ getPolicyFamilyImplemented(policyFamily) }}"></td>
+                <td><input class="input--small text--center" type="text" value="{{ getPolicyFamilyCompletePercent(policyFamily) }}%"></td>
+                <td><app-policy-percent-box [complete]="getPolicyFamilyCompletePercent(policyFamily)"></app-policy-percent-box>
+                <button class="button--black button--half">({{ getPolicyFamilyAbbreviation(policyFamily)  }}) Summary</button></td>
+            </tr>
+        </tbody>
+    </table>
+
+
+</main>

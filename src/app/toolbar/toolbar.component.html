@@ -1,0 +1,28 @@
+<header>
+    <a [routerLink]="['/']" preserveQueryParams preserveFragment class="logo">
+        <img class="logo__image" src="./assets/logo.png" />
+    </a>
+    <div class="spacer"></div>
+    <div class="title">
+        <h1 class="title__header">NIST Unified Data Governance</h1>
+        <div class="title__date">
+            <h4 class="title__date-header">Policy Effective Date</h4>
+            <input class="title__date-input" type="date" name="policy-effective-date" />
+        </div>
+    </div>
+    <div class="spacer"></div>
+    <div class="summary">
+        <span class="summary__score">
+            -777
+        </span>
+        <span class="summary__description">Summary Level Score</span>
+    </div>
+    <div class="spacer"></div>
+    <div class="actions">
+        <button class="button--black button--large">Administrative</button>
+        <button class="button--black button--large">Maintenance</button>
+        <button class="button--black button--large">Reports</button>
+        <button class="button--black button--large">Assessments</button>
+        <button class="button--black button--large">Projects</button>
+    </div>
+</header>

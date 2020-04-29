@@ -1,0 +1,12 @@
+@import './../styles/variables.scss';
+
+div {
+    display: block;
+    height: 25px;
+    border: 1px solid $black;
+    > div {
+        border: 0;
+        display: block;
+        background: $green;
+    }
+}

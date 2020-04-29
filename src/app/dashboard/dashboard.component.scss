@@ -1,0 +1,66 @@
+.policies {
+    width: 100%;
+    text-align: center;
+    font-size: 12px;
+
+    &__headers th {
+        &:nth-child(1) {
+            width: 15%;
+        }
+        &:nth-child(2) {
+            width: 60%;
+        }
+        &:nth-child(3) {
+            width: 3%;
+        }
+        &:nth-child(4) {
+            width: 5%;
+        }
+        &:nth-child(5) {
+            width: 3%;
+        }
+        &:nth-child(6) {
+            width: 15%;
+        }
+    }
+
+    &__dropdown-columns {
+        width: 100%;
+        border-collapse: collapse;
+        th {
+            &:nth-child(1) {
+                width: 40%;
+                text-align: left;
+            }
+            &:nth-child(2) {
+                width: 10%;
+                text-align: center;
+            }
+            &:nth-child(3) {
+                width: 5%;
+                text-align: center;
+            }
+            &:nth-child(4) {
+                width: 15%;
+                text-align: center;
+            }
+            &:nth-child(5) {
+                width: 3%;
+                text-align: center;
+            }
+            &:nth-child(6) {
+                width: 27%;
+                text-align: center;
+                overflow: hidden;
+            }
+        }
+    }
+
+    &__body {
+        app-policy-percent-box {
+            float: left;
+            width: 48%;
+            padding-right: 1%;
+        }
+    }
+}
