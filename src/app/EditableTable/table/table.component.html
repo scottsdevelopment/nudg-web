@@ -1,0 +1,21 @@
+<table class="editable-table">
+    <thead>
+        <tr>
+            <th *ngFor="let column of columns">
+                {{ column.label }}
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of source">
+            <app-editable-table-row *ngFor="let column of columns"
+                [value]='data[column.key]'
+                [editable]='column.editable'
+            >
+            </app-editable-table-row>
+        </tr>
+        <tr>
+            <td><div class="new" (click)="new()">(New)</div></td>
+        </tr>
+    </tbody>
+</table>

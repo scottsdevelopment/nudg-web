@@ -1,3 +1,5 @@
+@import './../styles/variables.scss';
+
 .policies {
     width: 100%;
     text-align: center;
@@ -57,10 +59,16 @@
     }
 
     &__body {
+        input:disabled {
+            background: $white;
+        }
         app-policy-percent-box {
             float: left;
             width: 48%;
             padding-right: 1%;
+        }
+        button {
+            font-size: 11px;
         }
     }
 }

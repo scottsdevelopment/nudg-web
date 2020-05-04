@@ -1,0 +1,30 @@
+<main>
+    <div class="login">
+        <div class="left">
+            
+        </div>
+        <div class="right">
+            <br>
+            <br>
+            <h1>Login</h1>
+            <form #f="ngForm" (ngSubmit)="login(f)" novalidate>
+                <div>
+                    <label>Username</label>
+                    <br>
+                    <input style="width: 75%" ngModel type="text" name="username" />
+                </div>
+                <div>
+                    <label>Password</label>
+                    <br>
+                    <input style="width: 75%" ngModel type="password" name="password" />
+                </div>
+                <br>
+                <br>
+                <div>
+                    <button class="button" type="submit">Submit</button>
+                    <button class="button" type="reset">Reset</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>

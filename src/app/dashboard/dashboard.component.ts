@@ -3,6 +3,7 @@ import Policy from '../interfaces/Policy';
 import PolicyFamily from '../interfaces/PolicyFamily';
 import { ApiService } from '../api.service';
 import { Router } from '@angular/router';
+import { PolicyFamilyService } from '../policy-family.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,12 +12,12 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
   policyFamilies: PolicyFamily[];
-  constructor(private api: ApiService, private router: Router) { }
+  constructor(public policyFamily: PolicyFamilyService, private router: Router) { }
 
   ngOnInit() {
-    this.api.getPolicyFamilies().subscribe((response) => {
-      this.policyFamilies = response;
-    })
+    this.policyFamily
+    .getPolicyFamilies()
+    .subscribe((policyFamilies) => this.policyFamilies = policyFamilies);
   }
 
   getPolicyFamilyCompletePercent(policyFamily: PolicyFamily) {
@@ -35,7 +36,15 @@ export class DashboardComponent implements OnInit {
   }
 
   getPolicyForm(policy: Policy) {
-    this.router.navigateByUrl(`/policy/${policy.id}`);
+    const popup = window.open(this.router.parseUrl(`/policy/${this.getPolicyIndex(policy.id) + 1}`).toString(), '_blank', 'left=0,top=0,toolbar=No,location=No,scrollbars=no,status=No,resizable=no,fullscreen=Yes');
+    popup.resizeTo(screen.availWidth, screen.availHeight);
+    popup.document.documentElement.requestFullscreen();
+  }
+
+  getPolicyIndex(id: string|number): number {
+    return this.policyFamilies.map((family) => family.policies)
+    .reduce((previous, current) => [...previous, ...current])
+    .findIndex((policy) => policy.id == id);
   }
 
 }

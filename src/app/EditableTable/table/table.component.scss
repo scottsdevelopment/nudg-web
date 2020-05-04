@@ -1,0 +1,28 @@
+@import './../../styles/variables.scss';
+
+.editable-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    empty-cells: show;
+    th, td {
+        border: 1px solid $grey10;
+    }
+    tr {
+        th {
+            background: $grey;
+            color: $black;
+        }
+        &:nth-child(even) td {
+            background: $grey20;
+        }
+        td {
+            background: $white;
+        }
+    }
+}
+
+.new {
+    color: $blue;
+    text-decoration: underline;
+}

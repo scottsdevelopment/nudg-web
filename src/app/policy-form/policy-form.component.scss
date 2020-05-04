@@ -1,7 +1,150 @@
 @import './../styles/variables.scss';
 
+header {
+    margin: 0;
+    padding: 0;
+    color: $ivory;
+    background: $red;
+    min-height: 50px;
+    clear: both;
+    padding: 0.25%;
+    border-bottom: 1px solid $black;
+    width: 99.5%;
+    > div {
+        float: left;
+    }
+    display: flex;
+}
+
+.spacer {
+    width: 1px;
+    height: 45px;
+    background: $grey;
+    margin-top: 2px;
+}
+
+.logo {
+    min-width: 50px;
+    height: 50px;
+    text-align: center;
+    margin-right: 0.25%;
+}
+
+.logo__image {
+    width: 50px;
+    height: 50px;
+}
+
+.title {
+    margin-left: 0.25%;
+    &__header {
+        font-size: 20px;
+        padding: 1% 0;
+        margin: 0;
+        text-align: center;
+    }
+    &__date {
+        width: 80%;
+        margin: 0 auto;
+        &-header {
+            font-size: 12px;
+            width: 50px;
+            text-align: right;
+            float: left;
+            padding: 0;
+            margin: 0;
+        }
+        &-input {
+            height: 40px;
+            margin-left: 10px;
+        }
+    }
+}
+
+.summary {
+    text-align: center;
+    width: 100px;
+    padding: 0 10px;
+    &__score {
+        color: $orange;
+        font-size: 48px;
+    }
+    &__description {
+        font-size: 14px;
+        display: block;
+    }
+}
+
+.actions {
+    margin-left: 10px;
+    min-width: 400px;
+    button {
+        background: $black;
+        border: 0;
+        color: $cream;
+        border-radius: 4px;
+        height: 50px;
+        width: 120px;
+        margin: 1px;
+    }
+
+    &__single {
+        float: left;
+    }
+
+    &__group {
+        float: left;
+        button {
+            height: 25px;
+            display: block;
+        }
+    }
+
+   
+}
+.policy {
+    float: left;
+    padding-left: 30px;
+    width: 500px;
+    &__records {
+        width: 144px;
+        float: right;
+        text-align: center;
+        margin: 0;
+        margin-right: 15px;
+        margin-bottom: 2px;
+        font-weight: bold;
+    }
+    &__lower {
+        height: 28px;
+        float: right;
+        clear: both;
+    }
+    &__title {
+        clear: both;
+        text-align: left;
+        margin: 0;
+        float: left;
+        padding-right: 5px;
+    }
+    &__actions {
+        float: left;
+        button {
+            height: 22px;
+            margin-left: 2px;
+            margin-right: 2px;
+            width: 40px;
+            margin-top: 0;
+            margin-bottom: 0;
+            border-radius: 3px;
+        }
+    }
+    select {
+        float: left;
+    }
+}
 .left {
-    width: 48%;
+    width: 49.5%;
     display: inline-block;
     &--float {
         height: 105px;
@@ -18,35 +161,18 @@
 }
 
 .right {
-    width: 48%;
+    padding-left: 1%;
+    width: 49.5%;
     display: inline-block;
 }
 
 .right__above {
     float: left;
-    width: 49%;
+    width: 49.5%;
     height: 105px;
-}
-
-textarea.large {
-    width: 99%;
-    height: 25em;
-}
-
-label {
-    font-size: 12px;
-}
-
-textarea {
-    color: $black;
-    background: $white;
-//  font-family: Arial, Helvetica, sans-serif;
-    font-weight: bold;
-    font-size: 12px;
-}
-
-h2 {
-    color: $black;
+    &:nth-child(2) {
+        padding-left: 1%;
+    }
 }
 
 .highlight {
@@ -54,13 +180,19 @@ h2 {
     color: $black;
     padding: 1pt;
     border: 1px solid $black;
+    // min-height: 17px;
 }
 
 .fixed-height {
-    height: 400px;
+    height: 350px;
     overflow-y: scroll;
 }
 
 .fixed-height--small {
-    height: 65px
+    height: 65px;
+    font-weight: normal;
+}
+
+* {
+    font-weight: bold;
 }

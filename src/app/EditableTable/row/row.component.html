@@ -1,0 +1,8 @@
+<div [style.display]="mode == 'view' ? 'block' : 'none'" (click)="edit()">{{ value }}</div>
+<div [style.display]="mode == 'edit' ? 'block' : 'none'">
+    <form (submit)="submit()">
+        <div>
+            <input #input type="text" [value]="value" />
+        </div>
+    </form>
+</div>

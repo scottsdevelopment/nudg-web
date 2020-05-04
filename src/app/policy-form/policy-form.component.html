@@ -1,27 +1,100 @@
+<header>
+  <a [routerLink]="['/']" preserveQueryParams preserveFragment class="logo">
+      <img class="logo__image" src="./assets/logo.png" />
+  </a>
+  <div class="spacer"></div>
+  <div class="title">
+      <h1 class="title__header">Policy Family <span style="text-align: left; width: 500px; display: inline-block" class="highlight">{{ family?.name }}</span></h1>
+  </div>
+  <div class="actions">
+    <div class="actions__single">
+      <button>Reports</button>
+    </div>
+    <div class="actions__group">
+      <button>Guidelines</button>
+      <button>Standard</button>
+    </div>
+    <div class="actions__group">
+      <button>Policy Scope</button>
+      <button>Policies Overview</button>
+    </div>
+    <div class="actions__single">
+      <button>NIST Assessment</button>
+    </div>
+    <div class="actions__single">
+      <button>CMMC</button>
+    </div>
+  </div>
+  <div class="policy">
+    <p class="policy__records highlight">Record {{ id }} of {{ policyLength }}</p>
+    <div class="policy__lower">
+
+      <p class="policy__title">Policy Status</p>
+      <select>
+        <option>Implemented</option>
+        <option>Deficiency</option>
+        <option>In Progress</option>
+        <option>Not Implemented</option>
+      </select>
+      
+      <div class="policy__actions">
+        <button (click)="first()">█⯇</button>
+        <button (click)="previous()">⯇</button>
+        <button (click)="next()">⯈</button>
+        <button (click)="last()">⯈█</button>
+      </div>
+    </div>
+  </div>
+</header>
 <main class="basic-container">
     <div class="left">
       <div class="left--float">
         <div class="row">
-          <p>Policy Subtitle: <span class="highlight">{{ policy?.name }}</span></p>
+          <p>Policy Subtitle: </p>
+          <span style="width: 65%; display: inline-block;" class="highlight">{{ policy?.name }}</span>
         </div>
         <div class="row">
-          <p>Policy Number: <span class="highlight">{{ getLatestRevision(policy).number }}</span></p>
+          <p>Policy Number: </p>
+          <span style="width: 6%; display: inline-block;" class="highlight">{{ getLatestRevision(policy).number }}</span>
           <p>Policy Issue Date: </p>
+          <span style="width: 9%; display: inline-block;" class="highlight">&nbsp;</span>
           <p>Policy Revision Number: </p>
+          <span style="width: 6%; display: inline-block;" class="highlight">&nbsp;</span>
           <p>Policy Revision Date: </p>
+          <span style="width: 9%; display: inline-block;" class="highlight">&nbsp;</span>
         </div>
         <div class="row">
-          <p>NIST 800-171 Mapping: <span class="highlight">{{ policy?.nist }}</span></p>
-          <p>Task Type: <span class="highlight">{{ policy?.taskType }}</span></p>
+          <p>NIST 800-171 Mapping:</p>
+          <span style="width: 25%; display: inline-block;" class="highlight">{{ policy?.nist }}</span>
+          <p>Task Type:</p>
+          <span style="width: 50%; display: inline-block;" class="highlight">{{ policy?.taskType }}</span>
         </div>
         <div class="row">
-          <p>CMMC Mapping: <span class="highlight">{{ policy?.cmmc }}</span></p>
-          <p>CMMC Level: <span class="highlight">{{ policy?.level }}</span></p>
+          <p>CMMC Mapping:</p>
+          <span style="width: 40%; display: inline-block;" class="highlight">{{ policy?.cmmc }}</span>
+          <p>CMMC Level:</p>
+          <span style="width: 10%; display: inline-block;" class="highlight">{{ policy?.level }}</span>
         </div>
       </div>
       <div class="clearbreak">
-        <h2>Policy Objective</h2>
+        <h2 class="nospacer">Policy Objective</h2>
         <div class="fixed-height highlight" [innerHTML]="getLatestRevision(policy).objective?.text"></div>
+      </div>
+      <div class="clearbreak">
+        <h2 class="nospacer">Deficiency List</h2>
+        <div class="fixed-height highlight">
+          <app-editable-table 
+            [source]="getLatestRevision(policy).deficiencies"
+            [columns]="[
+            { key: 'id', editable: false, label: 'POAM ID' },
+            { key: 'name', editable: true, label: 'Deficiency Name'},
+            { key: 'dateDetection', editable: true, label: 'Detection Date'},
+            { key: 'dateStatus', editable: true, label: 'Status Date'},
+            { key: 'status', editable: true, label: 'Status'},
+            { key: 'totalMilestones', editable: true, label: 'Total Milestones'}
+            ]">
+          </app-editable-table>
+        </div>
       </div>
     </div>
     <div class="right">
@@ -34,8 +107,22 @@
         <div class="fixed-height fixed-height--small highlight" [innerHTML]="getLatestRevision(policy).procedureControl?.procedure"></div>
       </div>
       <div class="clearbreak">
-        <h2>Policy Procedure</h2>
+        <h2 class="nospacer">Policy Procedure</h2>
         <div class="fixed-height highlight" [innerHTML]="getLatestRevision(policy).procedure?.text "></div>
+      </div>
+      <div class="">
+        <h2 class="nospacer">Process List</h2>
+        <div class="fixed-height highlight">
+          <app-editable-table 
+          [source]="getLatestRevision(policy).processes"
+          [columns]="[
+          { key: 'procedure', editable: true, label: 'Procedure'},
+          { key: 'description', editable: true, label: 'Description'},
+          { key: 'hyperlink', editable: true, label: 'Hyperlink'},
+          { key: 'status', editable: true, label: 'Status'}
+          ]">
+        </app-editable-table>
+        </div>
       </div>
     </div>
   </main>

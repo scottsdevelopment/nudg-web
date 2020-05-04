@@ -8,6 +8,7 @@ export default interface Policy {
     level: number,
     cmmc: string,
     taskType: string,
-    revisions: PolicyRevision[]
+    revisions: PolicyRevision[],
+    familyId: number
 }
   

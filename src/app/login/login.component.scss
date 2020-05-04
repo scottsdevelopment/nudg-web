@@ -1,0 +1,33 @@
+@import './../styles/variables.scss';
+
+main {
+    margin: 0 auto;
+    text-align: center;
+    height: 98vh;
+}
+
+.login {
+    border: 2px solid $black;
+    @include box-shadow(4px 4px 8px rgba($black, 0.5));
+    width: 600px;
+    height: 300px;
+    display: block;
+    margin: 12.5% auto;
+}
+
+.left {
+    height: 300px;
+    width: 300px;
+    float: left;
+    // border: 1px solid $black;
+    background-image: url('./../../assets/logo.png');
+    background-size: contain;
+}
+
+.right {
+    float: right;
+    height: 300px;
+    width: 300px;
+    // border: 1px solid $black;
+    background: $white;
+}
