@@ -95,3 +95,9 @@ input, p, div {
     border-radius: 4px;
     margin: 1px;
 }
+
+.href {
+    color: $blue;
+    text-decoration: underline;
+    cursor: pointer;
+}

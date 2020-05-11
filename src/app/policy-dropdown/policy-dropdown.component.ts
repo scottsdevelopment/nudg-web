@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, HostListener, Input } from '@angular/core';
+import { Component, OnInit, ElementRef, HostListener, Input, Output, EventEmitter } from '@angular/core';
 import Policy from '../interfaces/Policy';
 import PolicyRevision from '../interfaces/PolicyRevision';
 
@@ -11,6 +11,8 @@ export class PolicyDropdownComponent implements OnInit {
   opened: boolean = false;
   
   @Input() policies: Policy[];
+  @Output('onSelect') onSelectOutput = new EventEmitter<Policy>();
+
   policy: Policy = null;
 
   constructor(private eRef: ElementRef) {
@@ -28,7 +30,7 @@ export class PolicyDropdownComponent implements OnInit {
 
   // @TODO: Unduplicate this code
   getLatestRevision(policy: Policy): PolicyRevision {
-    return policy.revisions[0] || { number: '', status: '' };
+    return policy.revisions[0] || { id: -1, number: '', status: '' };
   }
 
   onDropdown() {
@@ -38,6 +40,7 @@ export class PolicyDropdownComponent implements OnInit {
   onSelect(policy) {
     this.opened = false;
     this.policy = policy;
+    this.onSelectOutput.emit(this.policy)
   }
 
 }

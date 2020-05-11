@@ -17,7 +17,9 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.policyFamily
     .getPolicyFamilies()
-    .subscribe((policyFamilies) => this.policyFamilies = policyFamilies);
+    .subscribe((policyFamilies) => {
+      this.policyFamilies = policyFamilies
+    });
   }
 
   getPolicyFamilyCompletePercent(policyFamily: PolicyFamily) {
@@ -35,10 +37,9 @@ export class DashboardComponent implements OnInit {
     return abbreviation;
   }
 
-  getPolicyForm(policy: Policy) {
+  openPolicyForm(policy: Policy) {
     const popup = window.open(this.router.parseUrl(`/policy/${this.getPolicyIndex(policy.id) + 1}`).toString(), '_blank', 'left=0,top=0,toolbar=No,location=No,scrollbars=no,status=No,resizable=no,fullscreen=Yes');
     popup.resizeTo(screen.availWidth, screen.availHeight);
-    popup.document.documentElement.requestFullscreen();
   }
 
   getPolicyIndex(id: string|number): number {

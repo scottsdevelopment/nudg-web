@@ -11,11 +11,13 @@
             <app-editable-table-row *ngFor="let column of columns"
                 [value]='data[column.key]'
                 [editable]='column.editable'
+                [template]='getTemplateByKey(column.key)'
+                [type]='getColumnType(column)'
             >
             </app-editable-table-row>
         </tr>
-        <tr>
-            <td><div class="new" (click)="new()">(New)</div></td>
+        <tr *ngIf="onNewOutput.observers.length">
+            <td><div class="href" (click)="new()">(New)</div></td>
         </tr>
     </tbody>
 </table>

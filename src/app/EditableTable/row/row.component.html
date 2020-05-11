@@ -1,8 +1,11 @@
-<div [style.display]="mode == 'view' ? 'block' : 'none'" (click)="edit()">{{ value }}</div>
+<div [style.display]="mode == 'view' ? 'block' : 'none'" (click)="edit()">
+    <ng-template *ngIf="template; else valueTemplate" [ngTemplateOutlet]="template" [ngTemplateOutletContext]="{$implicit: value}"></ng-template>
+    <ng-template #valueTemplate>{{ value }}</ng-template>
+</div>
 <div [style.display]="mode == 'edit' ? 'block' : 'none'">
     <form (submit)="submit()">
         <div>
-            <input #input type="text" [value]="value" />
+            <input #input [type]="type" [value]="value" />
         </div>
     </form>
 </div>

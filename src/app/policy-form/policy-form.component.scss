@@ -1,5 +1,9 @@
 @import './../styles/variables.scss';
 
+* {
+    font-weight: bold;
+}
+
 header {
     margin: 0;
     padding: 0;
@@ -102,6 +106,7 @@ header {
 
    
 }
+
 .policy {
     float: left;
     padding-left: 30px;
@@ -143,20 +148,12 @@ header {
         float: left;
     }
 }
+
 .left {
     width: 49.5%;
     display: inline-block;
     &--float {
         height: 105px;
-    }
-}
-
-.row {
-    display: block;
-    p {
-        display: inline-block;
-        margin: 0;
-        padding: 4px;
     }
 }
 
@@ -172,6 +169,15 @@ header {
     height: 105px;
     &:nth-child(2) {
         padding-left: 1%;
+    }
+}
+
+.row {
+    display: block;
+    p {
+        display: inline-block;
+        margin: 0;
+        padding: 4px;
     }
 }
 
@@ -191,8 +197,4 @@ header {
 .fixed-height--small {
     height: 65px;
     font-weight: normal;
-}
-
-* {
-    font-weight: bold;
 }

@@ -7,6 +7,10 @@ import { PolicyFamilyService } from '../policy-family.service';
 import PolicyFamily from '../interfaces/PolicyFamily';
 import RevisionDeficiency from '../interfaces/RevisionDeficiency';
 import { filter } from 'rxjs/operators';
+import { Store, createSelector } from '@ngrx/store';
+import AppState from '../interfaces/AppState';
+import { PopupService } from '../popup.service';
+import { selectByRevision } from '../reducers/deficiencies.reducer';
 
 @Component({
   selector: 'app-policy-form',
@@ -19,36 +23,41 @@ export class PolicyFormComponent implements OnInit {
   policyLength: number = 0;
   family: PolicyFamily = null;
   revisions: PolicyRevision[] = null;
-  constructor(private router: Router, private route: ActivatedRoute, public policyFamily: PolicyFamilyService) { }
+  constructor(private router: Router, private route: ActivatedRoute, public policyFamily: PolicyFamilyService, private store: Store, private popup: PopupService) { }
 
   ngOnInit() {
     this.route.params
-    .pipe(filter(params => params.id))
-    .subscribe(params => {
-      this.id = params.id;
-      this.policyFamily.getPolicyByIndex(this.id - 1)
-      .subscribe((policy) => {
-        this.policy = policy
-        this.policyFamily
-        .getPolicyFamilyById(policy.familyId)
-        .subscribe((family) => this.family = family);
+      .pipe(filter(params => params.id))
+      .subscribe(params => {
+        this.id = params.id;
+        this.policyFamily.getPolicyByIndex(this.id - 1)
+          .subscribe((policy) => {
+            this.policy = policy
+            this.policyFamily
+              .getPolicyFamilyById(policy.familyId)
+              .subscribe((family) => this.family = family);
+          });
       });
-    });
 
     this.policyFamily.getPolicyFamilies()
-    .subscribe((policyFamilies) => {
-      if (!policyFamilies.length) { 
-        return; 
-      }
+      .subscribe((policyFamilies) => {
+        if (!policyFamilies.length) {
+          return;
+        }
 
-      this.policyLength = policyFamilies
-      .map((policyFamily) => policyFamily.policies.length)
-      .reduce((sum, current) => sum + current);
-    });
+        this.policyLength = policyFamilies
+          .map((policyFamily) => policyFamily.policies.length)
+          .reduce((sum, current) => sum + current);
+      });
+  }
+
+  getDeficiencies() {
+    const revisionId = this.getLatestRevision(this.policy).id;
+    return this.store.select(selectByRevision(revisionId));
   }
 
   getLatestRevision(policy: Policy): PolicyRevision {
-    return policy?.revisions[0] || { number: '', status: '' };
+    return policy?.revisions[0] || { id: -1, number: '', status: '' };
   }
 
   editRow(element: HTMLElement, deficiency: RevisionDeficiency, column: string) {
@@ -69,7 +78,7 @@ export class PolicyFormComponent implements OnInit {
     if (this.id > 1) {
       this.id--;
       this.router.navigate(['policy', this.id]);
-    } 
+    }
   }
 
   next() {
@@ -79,4 +88,18 @@ export class PolicyFormComponent implements OnInit {
     }
   }
 
+  openDeficiencyForm(id: string | number) {
+    this.popup.createPopup(this.router.parseUrl(`/deficiency/${id}`).toString(), 910, 700);
+  }
+
+  openCreateDeficiencyForm() {
+    const id = this.getLatestRevision(this.policy).id;
+    this.popup.createPopup(this.router.parseUrl(`/revision/${id}/deficiency`).toString(), 910, 700);
+  }
+
+  getDateFormat(date: string): string {
+    const d = new Date(date);
+    // return `${d.getMonth()}-${d.getDate()}-${d.getFullYear()}`;
+    return d.toDateString();
+  }
 }

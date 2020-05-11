@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, HostListener, ElementRef, ViewChildren, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, HostListener, ElementRef, ViewChildren, ViewChild, TemplateRef } from '@angular/core';
 
 @Component({
   selector: 'app-editable-table-row',
@@ -8,8 +8,11 @@ import { Component, OnInit, Input, HostListener, ElementRef, ViewChildren, ViewC
 export class RowComponent implements OnInit {
 
   mode = 'view';
+  @Input() type: 'text' | 'number' | 'date' = "text";
   @Input() value: string;
   @Input() editable: boolean;
+  @Input() template: TemplateRef<any>;
+
   @ViewChild('input') input: ElementRef;
 
   constructor(private eRef: ElementRef) { }

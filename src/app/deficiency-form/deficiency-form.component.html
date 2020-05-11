@@ -1,0 +1,148 @@
+<header>
+    <a [routerLink]="['/']" preserveQueryParams preserveFragment class="logo">
+        <img class="logo__image" src="./assets/logo.png" />
+    </a>
+    <div class="spacer"></div>
+    <div class="title">
+        <h1 class="title__header">Deficiency Form</h1>
+    </div>
+</header>
+<main>
+    <form class="form" (ngSubmit)="onSubmit()" [formGroup]="form">
+        <div class="form__element">
+            <label class="form__label">POAM ID</label>
+            <input type="text" class="form__input" formControlName="id" />
+        </div>
+        <div class="form__group">
+            <div class="form__element">
+                <label for="" class="form__label form__label--wide">Deficiency Name</label><input class="form__input" type="text" formControlName="name" />
+            </div>
+            <div class="form__element">
+                <label for="" class="form__label">Status Date</label> <input type="date" class="form__input form__input--narrow" formControlName="dateStatus" />
+            </div>
+            <div class="form__element">
+                <label for="" class="form__label">Status</label> <select  class="form__input form__input--narrow" formControlName="status">
+                    <option></option>
+                    <option>Ongoing</option>
+                    <option>Completed</option>
+                </select>
+            </div>
+        </div>
+        <div class="form__element">
+            <label for="" class="form__label">Scheduled Completion Date</label>
+            <input class="form__input" type="date" formControlName="dateScheduleCompletion" />
+        </div>
+        <div class="form__element">
+            <label for="" class="form__label">Deficiency Description</label>
+            <textarea class="form__textarea form__textarea--wide" formControlName="description"></textarea>
+        </div>
+        <div class="form__element">
+            <label for="" class="form__label">Overall Remediation Plan</label>
+            <textarea class="form__textarea form__textarea--wide" formControlName="plan"></textarea>
+        </div>
+        <div class="left">
+            <div class="form__element">
+                <label for="" class="form__label">Detection Source</label>
+                <input class="form__input" type="text" formControlName="source" />
+            </div>
+            <div class="form__element">
+                <label for="" class="form__label">Detection Date</label>
+                <input class="form__input" type="date" formControlName="dateDetection" />
+            </div>
+            <div class="form__element">
+                <label for="" class="form__label">Weakness Source <br/>Identifier</label>
+                <textarea class="form__textarea form__textarea--tall" formControlName="weaknessSourceIdentifier"></textarea>
+            </div>
+            <div class="form__element">
+                <label for="" class="form__label">Asset Name (Identifier)</label>
+                <select class="form__input" formControlName="assetName"></select>
+            </div>
+            <div class="form__element">
+                <label for="" class="form__label">Point of Contact</label>
+                <input class="form__input" type="text" formControlName="pointOfContact" />
+            </div>
+            <div class="form__element">
+                <label for="" class="form__label">Resources Required</label>
+                <textarea class="form__textarea form__textarea--tall" formControlName="resoucesRequired"></textarea>
+            </div>
+            <div class="form__element">
+                <label for="" class="form__label">Resource Estimate</label>
+                <select class="form__input" formControlName="resourceEstimate">
+                    <option></option>
+                    <option>Funded</option>
+                    <option>Unfunded</option>
+                    <option>Unallocated</option>
+                </select>
+            </div>
+            <div class="form__element">
+                <label for="" class="form__label">Supporting <br/>Documents or Files </label>
+                <input class="form__input" type="file" formControlName="supportDocuments" />
+            </div>
+        </div>
+        <div class="right">
+            <div class="form__element">
+                <label for="" class="form__label">Vendor Dependency</label>
+                <select class="form__input" formControlName="vendorDependency">
+                    <option></option>
+                    <option>Yes</option>
+                    <option>No</option>
+                </select>
+            </div>
+            <div class="form__element">
+                <label for="" class="form__label">Last Vendor Check-in Date</label>
+                <input class="form__input" type="date" formControlName="dateLastVendorCheckin" />
+            </div>
+            <div class="form__element">
+                <label for="" class="form__label">Vendor Dependent Product Name</label>
+                <textarea class="form__textarea" formControlName="vendorDependentProductName"></textarea>
+            </div>
+            <div class="form__element">
+                <label for="" class="form__label">Original Risk Rating</label>
+                <select class="form__input" formControlName="originalRiskRating">
+                    <option></option>
+                    <option>Critical</option>
+                    <option>High</option>
+                    <option>Moderate</option>
+                    <option>Low</option>
+                </select>
+            </div>
+            <div class="form__element">
+                <label for="" class="form__label">Adjusted Risk Rating</label>
+                <select class="form__input" formControlName="adjustedRiskRating">
+                    <option></option>
+                    <option>High</option>
+                    <option>Moderate</option>
+                    <option>Low</option>
+                </select>
+            </div>
+            <div class="form__element">
+                <label for="" class="form__label">Risk Adjustment</label>
+                <input type="checkbox" formControlName="riskAdjustment" />
+            </div>
+            <div class="form__element">
+                <label for="" class="form__label">Risk Adjustment Deviation Rationale </label>
+                <textarea class="form__textarea" formControlName="riskAdjustmentDeviationRationale"></textarea>
+            </div>
+            <div class="form__element">
+                <label for="" class="form__label">False Positive </label>
+                <input type="checkbox" formControlName="falsePositive" />
+            </div>
+            <div class="form__element">
+                <label for="" class="form__label">Operational Requirement</label>
+                <input type="checkbox" formControlName="operationalRequirement" />
+            </div>
+            <div class="form__element">
+                <label for="" class="form__label">Operational Requirement Deviation Rationale</label>
+                <textarea class="form__textarea" formControlName="operationalRequirementDeviaitonRationale"></textarea>
+            </div>
+            <div class="form__element">
+                <label for="" class="form__label">Comments</label>
+                <textarea class="form__textarea" formControlName="comments"></textarea>
+            </div>
+        </div>
+        <div class="form__actions">
+            <button type="submit" class="button">Save</button>
+            <button type="reset" class="button">Reset</button>
+        </div>
+    </form>
+</main>

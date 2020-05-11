@@ -5,6 +5,7 @@ import RevisionDeficiency from './RevisionDeficiency';
 import RevisionProcess from './RevisionProcess';
 
 export default interface PolicyRevision {
+    id: number;
     number: string;
     status: string;
     objective?: PolicyObjective;
