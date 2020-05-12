@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import Policy from '../interfaces/Policy';
 import PolicyFamily from '../interfaces/PolicyFamily';
-import { ApiService } from '../api.service';
 import { Router } from '@angular/router';
-import { PolicyFamilyService } from '../policy-family.service';
+import { PolicyFamilyService } from '../services/policy-family.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,10 +15,10 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.policyFamily
-    .getPolicyFamilies()
-    .subscribe((policyFamilies) => {
-      this.policyFamilies = policyFamilies
-    });
+      .getPolicyFamilies()
+      .subscribe((policyFamilies) => {
+        this.policyFamilies = policyFamilies
+      });
   }
 
   getPolicyFamilyCompletePercent(policyFamily: PolicyFamily) {
@@ -42,10 +41,9 @@ export class DashboardComponent implements OnInit {
     popup.resizeTo(screen.availWidth, screen.availHeight);
   }
 
-  getPolicyIndex(id: string|number): number {
+  getPolicyIndex(id: string | number): number {
     return this.policyFamilies.map((family) => family.policies)
-    .reduce((previous, current) => [...previous, ...current])
-    .findIndex((policy) => policy.id == id);
+      .reduce((previous, current) => [...previous, ...current])
+      .findIndex((policy) => policy.id == id);
   }
-
 }

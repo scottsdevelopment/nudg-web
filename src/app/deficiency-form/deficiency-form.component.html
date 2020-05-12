@@ -15,13 +15,16 @@
         </div>
         <div class="form__group">
             <div class="form__element">
-                <label for="" class="form__label form__label--wide">Deficiency Name</label><input class="form__input" type="text" formControlName="name" />
+                <label for="" class="form__label form__label--wide">Deficiency Name</label>
+                <input class="form__input" type="text" formControlName="name" />
             </div>
             <div class="form__element">
-                <label for="" class="form__label">Status Date</label> <input type="date" class="form__input form__input--narrow" formControlName="dateStatus" />
+                <label for="" class="form__label">Status Date</label>
+                <input type="date" class="form__input form__input--narrow" formControlName="dateStatus" />
             </div>
             <div class="form__element">
-                <label for="" class="form__label">Status</label> <select  class="form__input form__input--narrow" formControlName="status">
+                <label for="" class="form__label">Status</label>
+                <select  class="form__input form__input--narrow" formControlName="status">
                     <option></option>
                     <option>Ongoing</option>
                     <option>Completed</option>
@@ -55,7 +58,7 @@
             </div>
             <div class="form__element">
                 <label for="" class="form__label">Asset Name (Identifier)</label>
-                <select class="form__input" formControlName="assetName"></select>
+                <select class="form__input" formControlName="assetNameId"></select>
             </div>
             <div class="form__element">
                 <label for="" class="form__label">Point of Contact</label>
@@ -74,10 +77,10 @@
                     <option>Unallocated</option>
                 </select>
             </div>
-            <div class="form__element">
+            <!-- <div class="form__element">
                 <label for="" class="form__label">Supporting <br/>Documents or Files </label>
-                <input class="form__input" type="file" formControlName="supportDocuments" />
-            </div>
+                <input class="form__input" type="file" formControlName="supportDocuments"/>
+            </div> --> 
         </div>
         <div class="right">
             <div class="form__element">
@@ -120,11 +123,11 @@
                 <input type="checkbox" formControlName="riskAdjustment" />
             </div>
             <div class="form__element">
-                <label for="" class="form__label">Risk Adjustment Deviation Rationale </label>
+                <label for="" class="form__label">Risk Adjustment Deviation Rationale</label>
                 <textarea class="form__textarea" formControlName="riskAdjustmentDeviationRationale"></textarea>
             </div>
             <div class="form__element">
-                <label for="" class="form__label">False Positive </label>
+                <label for="" class="form__label">False Positive</label>
                 <input type="checkbox" formControlName="falsePositive" />
             </div>
             <div class="form__element">

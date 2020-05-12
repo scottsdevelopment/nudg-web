@@ -2,6 +2,7 @@ import { MetaActionTypes, MetaActions, LoadStoreSuccess } from '../actions/meta.
 import RevisionDeficiency from '../interfaces/RevisionDeficiency';
 import { createEntityAdapter, EntityState, EntityAdapter } from '@ngrx/entity';
 import { Action, createReducer, on, createFeatureSelector, createSelector } from '@ngrx/store';
+import { DeficiencyActionTypes, DeficiencyActions } from '../actions/deficiency.actions';
 
 export const keyName = 'deficiencies'
 // const initialState: RevisionDeficiency[] = [];
@@ -38,10 +39,12 @@ export function reducer(state: State | undefined, action: Action) {
     return userReducer(state, action);
 } */
 
-export function reducer(state = initialState, action: MetaActions) {
+export function reducer(state = initialState, action: MetaActions | DeficiencyActions) {
     switch (action.type) {
         case MetaActionTypes.LoadSuccess:
             return adapter.setAll(action.payload[keyName], state);
+        case DeficiencyActionTypes.UpdateSuccess:
+            return adapter.upsertOne(action.payload, state)
         default:
             return state;
     }
@@ -53,4 +56,5 @@ const { selectIds, selectEntities, selectAll, selectTotal } = adapter.getSelecto
 
 export const selectState = createFeatureSelector<State>(keyName);
 export const selectAllSelector = createSelector(selectState, selectAll);
-export const selectByRevision = (revisionId: number) => createSelector(selectAllSelector, (deficiencies) => deficiencies.filter(deficiency => deficiency.revisionId === revisionId))
+export const selecyById = (deficiencyId: number) => createSelector(selectAllSelector, (deficiencies) => deficiencies.find((deficiency) => deficiency.id === deficiencyId));
+export const selectByRevision = (revisionId: number) => createSelector(selectAllSelector, (deficiencies) => deficiencies.filter(deficiency => deficiency.revisionId === revisionId));

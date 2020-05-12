@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { PolicyFormComponent } from './policy-form/policy-form.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
-import { AuthGuardService } from './auth-guard.service';
+import { AuthGuardService } from './services/auth-guard.service';
 import { CreateDeficiencyFormComponent } from './deficiency-form/create/create.component';
 import { UpdateDeficiencyFormComponent } from './deficiency-form/update/update.component';
 

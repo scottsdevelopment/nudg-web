@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import PolicyFamily from './interfaces/PolicyFamily';
-import Policy from './interfaces/Policy';
-import RevisionDeficiency from './interfaces/RevisionDeficiency';
-import { environment } from '../environments/environment';
-import AppState from './interfaces/AppState';
+import Policy from './../interfaces/Policy';
+import RevisionDeficiency from './../interfaces/RevisionDeficiency';
+import { environment } from './../../environments/environment';
+import AppState from './../interfaces/AppState';
 
 @Injectable({
   providedIn: 'root'

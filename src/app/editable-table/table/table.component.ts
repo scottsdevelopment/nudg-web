@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, TemplateRef, ContentChildren, ElementRef, QueryList, Output, EventEmitter } from '@angular/core';
-import { TemplateNameComponent } from 'src/app/template-name/template-name.component';
+import { TemplateNameComponent } from 'src/app/editable-table/template-name/template-name.component';
 
 @Component({
   selector: 'app-editable-table',

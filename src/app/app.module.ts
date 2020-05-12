@@ -1,25 +1,23 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MaterialModule } from './material/material.module';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PolicyFormComponent } from './policy-form/policy-form.component';
 import { PolicyDropdownComponent } from './policy-dropdown/policy-dropdown.component';
 import { PolicyPercentBoxComponent } from './policy-percent-box/policy-percent-box.component';
 import { HttpClientModule } from '@angular/common/http';
-import { TableComponent } from './EditableTable/table/table.component';
-import { RowComponent } from './EditableTable/row/row.component';
+import { TableComponent } from './editable-table/table/table.component';
+import { RowComponent } from './editable-table/row/row.component';
 import { LoginComponent } from './login/login.component';
-import { TemplateNameComponent } from './template-name/template-name.component';
+import { TemplateNameComponent } from './editable-table/template-name/template-name.component';
 import { DeficiencyFormComponent } from './deficiency-form/deficiency-form.component';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { StoreModule } from '@ngrx/store';
 import { environment } from 'src/environments/environment';
 import { EffectsModule } from '@ngrx/effects';
-import { PolicyEffects } from './effects/policy.effects';
+import { PolicyFamilyEffects } from './effects/policyFamily.effects';
 import { UpdateDeficiencyFormComponent } from './deficiency-form/update/update.component';
 import { CreateDeficiencyFormComponent } from './deficiency-form/create/create.component';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -33,6 +31,8 @@ import { reducer as procedureReducer, keyName as procedureKey } from './reducers
 import { reducer as processReducer, keyName as processKey } from './reducers/processes.reducer';
 import { reducer as revisionReducer, keyName as revisionKey } from './reducers/revisions.reducer';
 import { metaReducers } from './reducers/meta.reducer';
+import { DeficiencyEffects } from './effects/deficiency.effects';
+import { MetaEffects } from './effects/meta.effects';
 
 
 @NgModule({
@@ -54,7 +54,6 @@ import { metaReducers } from './reducers/meta.reducer';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MaterialModule,
     HttpClientModule,
     SocketIoModule.forRoot({ url: `${environment.apiEndpoint}`, options: {}}),
     StoreModule.forRoot({ 
@@ -67,7 +66,7 @@ import { metaReducers } from './reducers/meta.reducer';
       [processKey]: processReducer,
       [revisionKey]: revisionReducer
     }, { metaReducers }),
-    EffectsModule.forRoot([PolicyEffects]),
+    EffectsModule.forRoot([MetaEffects, PolicyFamilyEffects, DeficiencyEffects]),
     ReactiveFormsModule
   ],
   providers: [],

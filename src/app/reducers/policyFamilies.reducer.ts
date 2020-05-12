@@ -1,5 +1,5 @@
-import PolicyFamily from './../interfaces/PolicyFamily';
 import { MetaActionTypes, MetaActions } from '../actions/meta.actions';
+import PolicyFamily from './../interfaces/PolicyFamily';
 
 export const keyName = 'policyFamilies'
 const initialState: PolicyFamily[] = [];

@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
-import PolicyFamily from './interfaces/PolicyFamily';
+import PolicyFamily from '../interfaces/PolicyFamily';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { filter, map, concatMap, flatMap } from 'rxjs/operators';
-import Policy from './interfaces/Policy';
+import Policy from '../interfaces/Policy';
 import { Store, createSelector } from '@ngrx/store';
-import AppState from './interfaces/AppState';
-import { LoadPolicyFamilies, UpdateDeficiencySuccess } from './actions/policy.actions';
+import AppState from '../interfaces/AppState';
+import { UpdateSuccess } from '../actions/deficiency.actions';
 import { WebsocketService } from './websocket.service';
-import { LoadStore } from './actions/meta.actions';
+import { LoadStore } from '../actions/meta.actions';
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +27,7 @@ export class PolicyFamilyService {
       filter(event => event.type === 'RevisionDeficiency')
     )
     .subscribe((message) => {
-      this.store.dispatch( new UpdateDeficiencySuccess(message.data) );
+      this.store.dispatch( new UpdateSuccess(message.data) );
     })
   }
 

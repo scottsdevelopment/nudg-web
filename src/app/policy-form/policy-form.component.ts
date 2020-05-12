@@ -1,15 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../api.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import Policy from '../interfaces/Policy';
 import PolicyRevision from '../interfaces/PolicyRevision';
-import { PolicyFamilyService } from '../policy-family.service';
+import { PolicyFamilyService } from '../services/policy-family.service';
 import PolicyFamily from '../interfaces/PolicyFamily';
 import RevisionDeficiency from '../interfaces/RevisionDeficiency';
 import { filter } from 'rxjs/operators';
-import { Store, createSelector } from '@ngrx/store';
-import AppState from '../interfaces/AppState';
-import { PopupService } from '../popup.service';
+import { Store } from '@ngrx/store';
+import { PopupService } from '../services/popup.service';
 import { selectByRevision } from '../reducers/deficiencies.reducer';
 
 @Component({
