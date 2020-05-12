@@ -20,7 +20,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { PolicyFamilyEffects } from './effects/policyFamily.effects';
 import { UpdateDeficiencyFormComponent } from './deficiency-form/update/update.component';
 import { CreateDeficiencyFormComponent } from './deficiency-form/create/create.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 // Reducers
 import { reducer as policyReducer, keyName as policyKey } from './reducers/policies.reducer';
 import { reducer as policyFamilyReducer, keyName as policyFamilyKey } from './reducers/policyFamilies.reducer';
@@ -54,6 +54,7 @@ import { MetaEffects } from './effects/meta.effects';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     HttpClientModule,
     SocketIoModule.forRoot({ url: `${environment.apiEndpoint}`, options: {}}),
     StoreModule.forRoot({ 
